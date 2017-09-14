@@ -5,7 +5,7 @@ module Realms
         opts =  make_options(options, optionality)
 
         if count > 1
-          MultiChoice.new(subject, opts)
+          MultiChoice.new(subject, opts, count: count)
         else
           Choice.new(subject, opts)
         end

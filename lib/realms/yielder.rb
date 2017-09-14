@@ -41,7 +41,7 @@ module Realms
     end
 
     def may_choose_many(options, count:, **kwargs, &block)
-      choose_many(options, kwargs.merge(optionality: true), &block)
+      choose_many(options, kwargs.merge(count: count, optionality: true), &block)
     end
 
     def choose(options, **kwargs)

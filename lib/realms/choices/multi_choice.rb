@@ -10,7 +10,7 @@ module Realms
       end
 
       def decide(key)
-        decision << option_hash.delete(key) do
+        decision << options_hash.delete(key) do
           raise InvalidOption, "missing #{key} in #{options_hash.keys}"
         end
       end
@@ -20,12 +20,12 @@ module Realms
       end
 
       def decision
-        decision.reject(&:noop?)
+        @decision.reject(&:noop?)
       end
 
       def actionable?
         return true if undecided?
-        decision.none?(&:noop?)
+        @decision.none?(&:noop?)
       end
 
       def clear

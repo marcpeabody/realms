@@ -15,7 +15,7 @@ module Realms
       end
 
       def noop?
-        @noop ||= options.reject(&:noop?).empty?
+        options.reject(&:noop?).empty?
       end
 
       def undecided?
@@ -24,14 +24,12 @@ module Realms
 
       def actionable?
         return true if undecided?
-        decision != decision.noop?
+        !decision.noop?
       end
 
       def clear
         @decision = nil
       end
-
-      private
 
       def options_hash
         @options_hash ||= options.each_with_object({}) do |option, opts|

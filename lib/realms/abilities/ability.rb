@@ -18,7 +18,7 @@ module Realms
       end
 
       def key
-        card.name || self.class.key
+        self.class.respond_to?(:key) ? self.class.key : card.name
       end
 
       def self.auto?
